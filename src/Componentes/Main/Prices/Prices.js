@@ -1,109 +1,116 @@
-import React from 'react'
+import React from "react";
 
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Grid from '@material-ui/core/Grid';
-import StarIcon from '@material-ui/icons/StarBorder';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import imagen from "./mask.png";
+import maskWhite from "./MaskWhite.png";
+import maskRed from './MaskRed.png'
 
 const useStyles = makeStyles((theme) => ({
-    cardHeader: {
-      backgroundColor:
-        theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
-    },
-    cardPricing: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'baseline',
-      marginBottom: theme.spacing(2),
-    }
+  pricesContainer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    paddingTop: "1rem",
+    height: "80vh",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  sectionTitleAndDescription: {
+    width: "406px",
+    height: "106px",
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: "14rem",
+  },
+  sectionTitle: {
+    color: "#19b5fe",
+    fontSize: "80px",
+    textAlign: "center",
+    letterSpacing: "1.6px",
+    opacity: "0.15",
+  },
+  sectionDescription: {
+    color: "#fff",
+    width: "512px",
+    fontSize: "28px",
+    textAlign: "center",
+    letterSpacing: "0.56px",
+    position: "relative",
+    bottom: "10.5rem",
+    right: "2rem",
+    opacity: ".8",
+  },
+  productContainers: {
+    display: "flex",
+    marginTop: "1rem",
+  },
+  productContainer: {
+    width: "360px",
+    height: "260px",
+    backgroundColor: "#424242",
+    // opacity: "0.1",
+    borderRadius: "20px",
+    marginRight: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  productTitle: {
+    fontSize: "20px",
+    fontWeight: "bold",
+    letterSpacing: "0.4px",
+    color: "#fff",
+    opacity: "1",
+  },
+  careta: {
+    height: "150px",
+    width: "150px",
+  },
 }));
 
-const tiers = [
-    {
-      title: 'Free',
-      price: '0',
-      description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-      buttonText: 'Sign up for free',
-      buttonVariant: 'outlined',
-    },
-    {
-      title: 'Pro',
-      subheader: 'Most popular',
-      price: '15',
-      description: [
-        '20 users included',
-        '10 GB of storage',
-        'Help center access',
-        'Priority email support',
-      ],
-      buttonText: 'Get started',
-      buttonVariant: 'contained',
-    },
-    {
-      title: 'Enterprise',
-      price: '30',
-      description: [
-        '50 users included',
-        '30 GB of storage',
-        'Help center access',
-        'Phone & email support',
-      ],
-      buttonText: 'Contact us',
-      buttonVariant: 'outlined',
-    },
-];
-
 function Prices() {
-    const classes = useStyles();
-    return (
-        <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  subheaderTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
-                  className={classes.cardHeader}
-                />
-                <CardContent>
-                  <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h3" color="textPrimary">
-                      ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      /mo
-                    </Typography>
-                  </div>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="center" key={line}>
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    )
+  const classes = useStyles();
+  return (
+    <Container
+      maxWidth="md"
+      component="main"
+      className={classes.pricesContainer}
+    >
+      <div className={classes.sectionTitleAndDescription}>
+        <p className={classes.sectionTitle}>PRODUCTS</p>
+        <p className={classes.sectionDescription}>
+          Suitable for all your needs
+        </p>
+      </div>
+      <div className={classes.productContainers}>
+        <div className={classes.productContainer}>
+          <img
+            src={maskRed}
+            alt="Imagen De producto mamalon"
+            className={classes.careta}
+          />
+          <span className={classes.productTitle}>Spctr3</span>
+        </div>
+        <div className={classes.productContainer}>
+          <img
+            src={maskWhite}
+            alt="Imagen De producto mamalon"
+            className={classes.careta}
+          />
+          <span className={classes.productTitle}>Spectr3+</span>
+        </div>
+        <div className={classes.productContainer}>
+          <img
+            src={imagen}
+            alt="Imagen De producto mamalon"
+            className={classes.careta}
+          />
+          <span className={classes.productTitle}>Spctr3 PRO</span>
+        </div>
+      </div>
+    </Container>
+  );
 }
 
 export default Prices;

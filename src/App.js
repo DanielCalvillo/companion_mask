@@ -3,7 +3,7 @@ import Landing from './Componentes/Landing/Landing'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{background: "#222"}}>
        <Landing />
     </div>
   );
